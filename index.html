@@ -8,26 +8,69 @@
     <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
     </head>
     <body>
-         <input type = "text" placeholder = "day" id = "day"> <br>
+         <input type = "text" placeholder = "park" id = "names" style="display: inline"> <br>
          <button id = "txtSearch">
              Search
         </button>
+      
+        <div style="align:centre">
+        <form action="/action_page.php">
+              <input type="checkbox" id="day1" value="Sun"> Sunday's Shows<br>
+              <input type="checkbox" id="day2" value="Mon"> Monday's Shows<br>
+              <input type="checkbox" id="day3" value="Tue"> Tuesday's Shows<br>
+              <input type="checkbox" id="day4" value="Wed"> Wednesday's Shows<br>
+              <input type="checkbox" id="day5" value="Thu"> Thursday's Shows<br>
+              <input type="checkbox" id="day6" value="Fri"> Friday's Shows<br>
+              <input type="checkbox" id="day7" value="Sat"> Saturday's Shows<br>
+  <input type="submit" value="Submit">
+</form>
+        </div>
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-               integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+               integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">                </script>
+        
         <script>
             var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
+            var count = 0;
+            var parkName;
+            parkName =  $("#names").val();
+            var string = parkName;
+            const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1)
+            console.log(parkName);
             $(document).ready(function(){
                 $("#txtSearch").on("click", function(){
-                    console.log('#txtSearch');
-                   $.get(endpoint + "?day=" + $("#day").val(), 
+                   $.get(endpoint + "?park=" + $("#names").val(), 
                          function(response){
+                       console.log($("#names").val());
                              $.each(response, function(i,v){
-                                    $("body").append(v.day + "<br>");
+                                 if(v.day == $("#day1").val()){                        
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                 else if(v.day == $("#day2").val()){
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                 else if(v.day == $("#day3").val()){
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                 else if(v.day == $("#day4").val()){
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                 else if(v.day == $("#day5").val()){
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                 else if(v.day == $("#day6").val()){
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                 else if(v.day == $("#day7").val()){
+                                    $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                                 }
+                                    
                              });
+                          
                     }); 
                 });
             });
-            
         </script>
+        <!--   Lopping for second  Search paramter      -->
+  
     </body>
 </html>
