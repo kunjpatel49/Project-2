@@ -1,50 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Untitled App</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
-    </head>
-    <body>
-         <input type = "text" placeholder = "park" id = "names" style="display: inline"> <br>
-         <button id = "txtSearch">
-             Search
-        </button>
-      
-        <div style="align:centre">
-        <form action = "action.php">
-              <input type="checkbox" id="day1" value="Sun"> Sunday's Shows<br>
-              <input type="checkbox" id="day2" value="Mon"> Monday's Shows<br>
-              <input type="checkbox" id="day3" value="Tue"> Tuesday's Shows<br>
-              <input type="checkbox" id="day4" value="Wed"> Wednesday's Shows<br>
-              <input type="checkbox" id="day5" value="Thu"> Thursday's Shows<br>
-              <input type="checkbox" id="day6" value="Fri"> Friday's Shows<br>
-              <input type="checkbox" id="day7" value="Sat"> Saturday's Shows<br>
-  <input type="submit" value="Submit">
-</form>
-        </div>
-       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
-               integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">                </script>
-        
-<!--         <script>
-    $(document).ready(function() {
-
-      function hideScreens() {
-        $(".content").hide();
-      }
-
-      $(".").on("click", function(){
-        hideScreens();
-        var target = $(this).attr("href");
-        $(target).show();
-        $(target).load("page_content/_" + target.replace("#","") + ".html");
-      });
-
-    });
-  </script> -->
-        <script>
+<script>
             var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
             var count = 0;
             var parkName;
@@ -96,8 +50,3 @@
                 });
             });
         </script>
-        
-        <!--   Lopping for second  Search paramter      -->
-  
-    </body>
-</html>
