@@ -2,12 +2,31 @@
 <html>
     <head>
       <!--   Search bar styles     -->      
-        <title>Untitled App</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+<title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      
+<style>
+    table{
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+    }
+    table, th, td{
+        border: 1px solid #cdcdcd;
+    }
+    table th, table td{
+        padding: 5px;
+        text-align: left;
+    }
+</style>
     </head>
+  
+  
     <body>
       <div class="content" style="text-align: center; background-color:lightblue;">
          <input type = "text" placeholder = "park" id = "names" style="display: inline">
@@ -25,11 +44,24 @@
               <input type="checkbox" id="day6" value="Fri"> Friday's Shows<br>
               <input type="checkbox" id="day7" value="Sat"> Saturday's Shows<br>
  
-</form>
+        </form>
         </div>
+      
+  <br>
+      <table>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Title</th>
+                <th>Park</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">                </script>
-        
+     
          <script>
     $(document).ready(function() {
 
@@ -46,6 +78,7 @@
       const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1)
       console.log(parkName);
       $(document).ready(function(){
+//         $(".container").hide();
           $("#txtSearch").on("click", function(){
             hideScreens();
              $.get(endpoint + "?park=" + $("#names").val(), 
@@ -53,36 +86,49 @@
                  console.log($("#names").val());
                        $.each(response, function(i,v){
                            if(v.day == $("#day1").val() && $('#day1').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
                            else if(v.day == $("#day2").val() && $('#day2').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
                            else if(v.day == $("#day3").val() && $('#day3').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
                            else if(v.day == $("#day4").val() && $('#day4').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
                            else if(v.day == $("#day5").val() && $('#day5').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
                            else if(v.day == $("#day6").val() && $('#day6').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
                            else if(v.day == $("#day7").val() && $('#day7').prop('checked')){
-                              $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
                                count = 1;
                            }
-                           else{
-                             $("body").append("<br>" + v.day + v.park + v.title + "<br>")
+                           else if($(":checkbox:checked").length == 0){
                                count = 1;
+                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
+                              $("table tbody").append(markup);
+
+                              
+                          
+                             
+                             
                            }
 
                        });
