@@ -13,7 +13,7 @@
 <style>
     table{
         width: 100%;
-        margin: 20px 0;
+        margin: 20px;
         border-collapse: collapse;
     }
     table, th, td{
@@ -43,44 +43,49 @@
               <input type="checkbox" id="day5" value="Thu"> Thursday's Shows<br>
               <input type="checkbox" id="day6" value="Fri"> Friday's Shows<br>
               <input type="checkbox" id="day7" value="Sat"> Saturday's Shows<br>
- 
-        </form>
+          </form>
+          <button id = "daySearch">
+             Search by Day
+        </button>
         </div>
       
   <br>
-      <table>
+      <div>
+      <table style="overflow-x:auto;">
         <thead>
             <tr>
                 <th>Day</th>
                 <th>Title</th>
                 <th>Park</th>
+                <th>Contact</th>
             </tr>
         </thead>
         <tbody></tbody>
       </table>
+      </div>
       
        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">                </script>
      
          <script>
-    $(document).ready(function() {
-
-      function hideScreens() {
+           function hideScreens() {
         $(".content").hide();
       }
-
-    
-      var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
+           
+     var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
       var count = 0;
       var parkName;
       parkName =  $("#names").val();
       var string = parkName;
       const nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1)
+    $(document).ready(function() {
+      
       console.log(parkName);
       $(document).ready(function(){
-//         $(".container").hide();
           $("#txtSearch").on("click", function(){
             hideScreens();
+            
+             // if searching by day and park name -->
              $.get(endpoint + "?park=" + $("#names").val(), 
                    function(response){
                  console.log($("#names").val());
@@ -120,15 +125,11 @@
                               $("table tbody").append(markup);
                                count = 1;
                            }
+                         // show all available SHOWS in that park if no prefered day selected
                            else if($(":checkbox:checked").length == 0){
                                count = 1;
                               var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td></tr>";
-                              $("table tbody").append(markup);
-
-                              
-                          
-                             
-                             
+                              $("table tbody").append(markup);  
                            }
 
                        });
@@ -139,9 +140,71 @@
               }); 
           });
       });
-
-
     });
+          
+     // Search by day
+     $(document).ready(function(){
+          $("#daySearch").on("click", function(){ 
+            hideScreens();
+            if($('#day1').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day1").val(), function(response){
+                      $.each(response, function(i,v){
+                        var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            if($('#day2').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day2").val(), function(response){
+                      $.each(response, function(i,v){
+                        var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            if($('#day3').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day3").val(), function(response){
+                      $.each(response, function(i,v){
+                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            if($('#day4').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day4").val(), function(response){
+                      $.each(response, function(i,v){
+                        var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            if($('#day5').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day5").val(), function(response){
+                      $.each(response, function(i,v){
+                        var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            if($('#day6').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day6").val(), function(response){
+                      $.each(response, function(i,v){
+                        var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            if($('#day7').prop('checked')){
+              $.get(endpoint + "?day=" + $("#day7").val(), function(response){
+                      $.each(response, function(i,v){
+                        var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + "</td></tr>";
+                              $("table tbody").append(markup);
+                      });
+              });
+            }
+            
+          });
+     });
   </script>
   
     </body>
