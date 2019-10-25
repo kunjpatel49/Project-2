@@ -95,6 +95,7 @@
                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">  
       </script>
      
+
      <script>
        var d = new Date();
        var temp;
@@ -102,10 +103,10 @@
              $.get(endpoint + searchQuery + $(searchType).val(), 
                    function(response){
                        $.each(response, function(i,v){
+                        temp = new Date(v.date);
                            if(v.day == $("#day1").val() && $('#day1').prop('checked')){
                               if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
-                              
                               $("table tbody").append(markup);
                                count = 1;
                            }
@@ -198,7 +199,7 @@
             if($('#day1').prop('checked')){
               $.get(endpoint + "?day=" + $("#day1").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                        if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
@@ -216,7 +217,7 @@
             if($('#day2').prop('checked')){
               $.get(endpoint + "?day=" + $("#day2").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                       if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
@@ -234,7 +235,7 @@
             if($('#day3').prop('checked')){
               $.get(endpoint + "?day=" + $("#day3").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                        if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
@@ -252,7 +253,7 @@
             if($('#day4').prop('checked')){
               $.get(endpoint + "?day=" + $("#day4").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                        if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
@@ -270,7 +271,7 @@
             if($('#day5').prop('checked')){
               $.get(endpoint + "?day=" + $("#day5").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                        if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
@@ -288,7 +289,7 @@
             if($('#day6').prop('checked')){
               $.get(endpoint + "?day=" + $("#day6").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                        if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
@@ -306,7 +307,7 @@
             if($('#day7').prop('checked')){
               $.get(endpoint + "?day=" + $("#day7").val(), function(response){
                       $.each(response, function(i,v){
-                        temp = v.date;
+                        temp = new Date(v.date);
                       if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               
