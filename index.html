@@ -14,6 +14,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
       
 <style>
+  
   div.tableC{
     color:lightblue;
   }
@@ -29,24 +30,12 @@
         padding: 5px;
         text-align: left;
     }
-  #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-</style>
-      <style>
-body {
+  body {
 	background-image: url("https://www.xmple.com/wallpaper/black-grey-gradient-linear-2160x1080-c2-000000-808080-a-90-f-14.svg");
         background-repeat:no-repeat;
        background-size:cover;
-} 
-</style>
-        <!-- Custom fonts for this template -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  }
+      </style>
     </head>
   
   
@@ -54,7 +43,7 @@ body {
       <div class="content" style="text-align: center;">
         <h3 style="color:lightblue">Search By Park Name</h3>
          <input type = "text" placeholder = "Park" id = "names" style="display: inline">
-        <form action = "action.php" style="color:lightblue">
+        <form style="color:lightblue">
               <input type="checkbox" id="upcoming" value="new" checked> Show Upcoming Shows Only<br>
         </form>
          <button id = "txtSearch">
@@ -98,21 +87,7 @@ body {
         <tbody></tbody>
       </table>
       </div>
-    <section id="maps">
-        <script language="JavaScript">
-           $(document).ready(function() {
-             function initMap() {
-              // The location of Uluru
-              var uluru = {lat: 41.88784692, lng: -87.76559245};
-              // The map, centered at Uluru
-              var map = new google.maps.Map(
-                  document.getElementById('map'), {zoom: 12, center: uluru});
-              // The marker, positioned at Uluru
-              var marker = new google.maps.Marker({position: uluru, map: map});
-}
-          });
-        </script>
-      </section>
+  
 
       
       
@@ -121,48 +96,71 @@ body {
       </script>
      
      <script>
+       var d = new Date();
+       var temp;
        function getData(searchQuery, searchType){
              $.get(endpoint + searchQuery + $(searchType).val(), 
                    function(response){
-                 console.log($("#names").val());
                        $.each(response, function(i,v){
                            if(v.day == $("#day1").val() && $('#day1').prop('checked')){
+                              if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
+                           }
                            }
                            else if(v.day == $("#day2").val() && $('#day2').prop('checked')){
-                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                               if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
+                           }
                            }
                            else if(v.day == $("#day3").val() && $('#day3').prop('checked')){
+                              if($('#upcoming').prop('checked') && temp >= d ){
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
+                           }
                            }
                            else if(v.day == $("#day4").val() && $('#day4').prop('checked')){
-                            var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                             if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
+                           }
                            }
                            else if(v.day == $("#day5").val() && $('#day5').prop('checked')){
-                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "javascript:initMap()" >Directions</a></td></tr>';
+                             temp = new Date(v.date);
+                             if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
+                           }
                            }
                            else if(v.day == $("#day6").val() && $('#day6').prop('checked')){
-                            var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                             if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
+                           }
                            }
                            else if(v.day == $("#day7").val() && $('#day7').prop('checked')){
-                            var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                             if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
                                count = 1;
                            }
+                           }
                          // show all available SHOWS in that park if no prefered day selected
-                           else if($(":checkbox:checked").length == 0){
+                           else if($(":checkbox:checked").length == 0 && !$('#upcoming').prop('checked')){
                                count = 1;
                              var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
                               $("table tbody").append(markup);  
@@ -191,6 +189,8 @@ body {
     });
           
      // Search by day
+      var d = new Date();
+      var temp;
      $(document).ready(function(){
           $("#daySearch").on("click", function(){ 
             hideScreens();
@@ -198,56 +198,135 @@ body {
             if($('#day1').prop('checked')){
               $.get(endpoint + "?day=" + $("#day1").val(), function(response){
                       $.each(response, function(i,v){
-                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                       if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
                       });
               });
             }
             if($('#day2').prop('checked')){
               $.get(endpoint + "?day=" + $("#day2").val(), function(response){
                       $.each(response, function(i,v){
-                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                      if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
                       });
               });
             }
             if($('#day3').prop('checked')){
               $.get(endpoint + "?day=" + $("#day3").val(), function(response){
                       $.each(response, function(i,v){
-                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                       if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
                       });
               });
             }
             if($('#day4').prop('checked')){
               $.get(endpoint + "?day=" + $("#day4").val(), function(response){
                       $.each(response, function(i,v){
-                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                       if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
                       });
               });
             }
             if($('#day5').prop('checked')){
               $.get(endpoint + "?day=" + $("#day5").val(), function(response){
                       $.each(response, function(i,v){
-                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                       if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
                       });
               });
             }
             if($('#day6').prop('checked')){
               $.get(endpoint + "?day=" + $("#day6").val(), function(response){
                       $.each(response, function(i,v){
-                       var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                       if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
                       });
               });
             }
             if($('#day7').prop('checked')){
               $.get(endpoint + "?day=" + $("#day7").val(), function(response){
                       $.each(response, function(i,v){
-                      var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                        temp = v.date;
+                      if($('#upcoming').prop('checked') && temp >= d ){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
                               $("table tbody").append(markup);
+                               count = 1;
+                           }
+                        else{
+                          var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              
+                              $("table tbody").append(markup);
+                        }
+                      });
+              });
+            }
+            if( !$('#upcoming').prop('checked') && $(":checkbox:checked").length == 0){
+                $.get(endpoint , function(response){
+                      $.each(response, function(i,v){
+                             var markup = "<tr><td>"+v.day+"</td><td>" + v.title + "</td><td>" + v.park + "</td><td>" + v.park_phone + '</td><td><a href= "_maps.html" >Directions</a></td></tr>';
+                              $("table tbody").append(markup);
+                           
                       });
               });
             }
@@ -265,7 +344,7 @@ $(document).ready(function(){
           });
  });
   </script>
-     
+
   
     </body>
 </html>
