@@ -4,6 +4,25 @@
 <head>
   <!--   Search bar styles     -->
   <title>Teaser</title>
+ 
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li id="home" class="nav-item active">
+      <a class="nav-link" href="#searchPage">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="about.html">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+</nav>
+  
+  
   <div class="jumbotron text-center bg-white" style="background-image: url('https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943__480.jpg')">
     <h1 style="font-family:'Times New Roman', Times, serif; color: black">Teaser</h1>
   </div>
@@ -22,7 +41,7 @@
       font-family:"Times New Roman", Times, serif;
     }
     #map {
-      height: 400px;
+      height: 700px;
       /* The height is 400 pixels */
       width: 100%;
       /* The width is the width of the web page */
@@ -34,7 +53,7 @@
 
 <body>
 
-
+<section id="searchPage">
   <div class="content" style="text-align: center;">
     <h3 style="color:lightblue">Search By Park Name</h3>
     <input type="text" placeholder="Park" id="names" style="display: inline">
@@ -70,18 +89,19 @@
       <input type="checkbox" id="day7" value="Sat">Saturday's Shows
       <br>
     </form>
-    <button id="daySearch">
+    <button id="daySearch" class="bg-white">
       Search by Day
     </button>
   </div>
-
+  <!--  Reserving a DIV for number of results   -->
+  <div id=results style="color: white"></div>
   <br>
   <div class="tableC" style="text-align: center;">
-    <ul class="list-group">
+    <ul id="list" class="list-group">
     </ul>
   </div>
 
-
+  </section>
 
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
@@ -90,106 +110,42 @@
   <script>
     var d = new Date();
     var temp;
-
+    var resultsFound = 0;
+    var count = 0;
     function getData(searchQuery, searchType) {
       $.get(endpoint + searchQuery + $(searchType).val(), function(response) {
         $.each(response, function(i, v) {
           temp = new Date(v.date);
-          if(v.day == $("#day1").val() && $('#day1').prop('checked')) {
+          for(var k=0; k<=7;k++){
+          if(v.day == $("#day"+k).val() && $("#day"+k).prop('checked')) {
             if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
+              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+              $("#list").append(markup);
               createMarkers(v);
               count = 1;
+              resultsFound++;
             } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
+              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+              $("#list").append(markup);
               createMarkers(v);
               count = 1;
+              resultsFound++;
             }
-          } else if(v.day == $("#day2").val() && $('#day2').prop('checked')) {
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            }
-          } else if(v.day == $("#day3").val() && $('#day3').prop('checked')) {
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            }
-          } else if(v.day == $("#day4").val() && $('#day4').prop('checked')) {
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "nesday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "nesday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            }
-          } else if(v.day == $("#day5").val() && $('#day5').prop('checked')) {
-            temp = new Date(v.date);
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "rsday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "rsday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            }
-          } else if(v.day == $("#day6").val() && $('#day6').prop('checked')) {
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            }
-          } else if(v.day == $("#day7").val() && $('#day7').prop('checked')) {
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "urday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "urday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<button type='button'onclick='document.getElementById('map').innerHTML = Date()'>Click me to display Date and Time</button></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
-              createMarkers(v);
-              count = 1;
-            }
-          }
-          // show all available SHOWS in that park if no prefered day selected
-          else if($(":checkbox:checked").length == 0 && !$('#upcoming').prop('checked')) {
+          } 
+         }
+          // show all available SHOWS in that park or that movie if no prefered day selected
+          if($(":checkbox:checked").length == 0 && !$('#upcoming').prop('checked')) {
             count = 1;
-            var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<button type='button'onclick='document.getElementById('map').innerHTML = Date()'>Click me to display Date and Time</button></li>" + "<br>" + "</div>";
-            $("ul").append(markup);
+            var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+            $("#list").append(markup);
             createMarkers(v);
             count = 1;
+            resultsFound++;
           }
         });
+        if(count == 1) {
+          $("#results").append("About " + resultsFound + " results found!");
+        }
         if(count == 0) {
           alert("No Shows Available on this day!");
         }
@@ -201,7 +157,6 @@
     }
     $(".tableC").hide();
     var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
-    var count = 0;
     $(document).ready(function() {
       $("#txtSearch").on("click", function() {
         hideScreens();
@@ -209,143 +164,60 @@
         getData('?park=', '#names');
       });
     });
-     // Search by day
+
+    // Search by day
     var d = new Date();
     var temp;
+    var counter = 0;
+
     $(document).ready(function() {
       $("#daySearch").on("click", function() {
         hideScreens();
         $(".tableC").show();
-        if($('#day1').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day1").val(), function(response) {
+        for(var j = 0; j <= 7; j++){
+        if($('#day'+j).prop('checked')) {
+          $.get(endpoint + "?day=" + $("#day"+j).val(), function(response) {
             $.each(response, function(i, v) {
               temp = new Date(v.date);
               if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
+                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                $("#list").append(markup);
                 createMarkers(v);
                 count = 1;
+                counter++;
               } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
+                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<button type='button' class=button onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                $("#list").append(markup);
                 createMarkers(v);
-              }
-            });
-          });
-        }
-        if($('#day2').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day2").val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
+                counter++;
                 count = 1;
-                createMarkers(v);
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
               }
             });
+           
           });
+          
         }
-        if($('#day3').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day3").val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "sday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-                count = 1;
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "sday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-              }
-            });
-          });
-        }
-        if($('#day4').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day4").val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "nesday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-                count = 1;
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "nesday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-              }
-            });
-          });
-        }
-        if($('#day5').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day5").val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "rsday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-                count = 1;
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "rsday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-              }
-            });
-          });
-        }
-        if($('#day6').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day6").val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-                count = 1;
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-              }
-            });
-          });
-        }
-        if($('#day7').prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day7").val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "urday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-                count = 1;
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "urday" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<a href= '_maps.html' >Directions</a></li>" + "<br>" + "</div>";
-                $("ul").append(markup);
-                createMarkers(v);
-              }
-            });
-          });
-        }
+    }
+           
         if(!$('#upcoming').prop('checked') && $(":checkbox:checked").length == 0) {
           $.get(endpoint, function(response) {
             $.each(response, function(i, v) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<button type='button' onclick='hideResults()'>Directions</button></li>" + "<br>" + "</div>";
-              $("ul").append(markup);
+              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+              $("#list").append(markup);
               createMarkers(v);
+              count = 1;
+              counter++;
             });
           });
+          if(count == 1 ) {
+          console.log("kjjkbkbkbhbhk"+resultsFound);
+          $("#results").append("About " + counter + " results found!");
         }
-      });
+        }
     });
+    });
+     
+     
      // Search by Movie Title and Day
     $(document).ready(function() {
       $("#titleSearch").on("click", function() {
@@ -354,42 +226,39 @@
         getData('?title=', '#movies');
       });
     });
-     // Initialize and add the map
-    var map;
 
+    // Initialize and add the map
+    var map;
+var markers = [];
     function initMap() {
       // The location of Uluru
-      var uluru = {
+      
+      var chicago = {
         lat: 41.8781,
         lng: -87.6298
       };
       map = new google.maps.Map(document.getElementById('map'), {
         zoom: 11,
-        center: uluru
+        center: chicago
       });
       // The marker, positioned at Uluru
     }
 
     function createMarkers(record) {
+      var latitude = parseFloat(record.location.latitude);
+      var longitude = parseFloat(record.location.longitude);
       var loc = {
-        lat: parseFloat(record.location.latitude),
-        lng: parseFloat(record.location.longitude)
+        lat: latitude,
+        lng: longitude
       };
-      console.log(loc);
-      if(record.cc == "Y"){
-         var cc = "Closed Captioned Movie"
-         }
-      else{
+      if(record.cc == "Y") {
+        var cc = "Closed Captioned Movie"
+      } else {
         var cc = "Not Closed-Captioned"
       }
       var currDate = record.date;
       currDate = currDate.split("T")[0];
-      var contentString = "<div class=info style= text-align: center>" + "<h3>" + record.title + " at " + record.park + "</h3>" + 
-          "<p> Address: " + record.park_address + 
-          "<br>Date: " + currDate +
-          "<br>Rating: " + record.rating +
-          "<br>CC: " + cc +
-          "</p>" + "</div>";
+      var contentString = "<div class=info style= text-align: center>" + "<h3>" + record.title + " at " + record.park + "</h3>" + "<p> Address: " + record.park_address + "<br>Date: " + currDate + "<br>Rating: " + record.rating + "<br>CC: " + cc + "<br><a href='https://www.google.com/maps/search/?api=1&query=" + latitude + ", " + longitude + "'>" + "Get Directions" + "</a>" + "</p>" + "</div>";
       var infowindow = new google.maps.InfoWindow({
         content: contentString
       });
@@ -400,14 +269,38 @@
       });
       marker.addListener('click', function() {
         infowindow.open(map, marker);
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
       });
+      markers.push(marker);
+    }
+   
+    function hideResults() {
+      $(".maps").hide();
+      $("#map").show();
     }
     
-    function hideResults(){
-        $(".maps").hide();
-    }
+    function setMapOnAll(map) {
+        for (var i = 0; i < markers.length; i++) {
+          markers[i].setMap(map);
+        }
+      }
+    
+   $("#home").click(function()  {
+     $(".maps").hide();
+     $("#map").hide();
+      $(".content").show();
+     setMapOnAll(null);
+     resultsFound = 0;
+     $( "#results" ).empty();
+   });
+    
   </script>
-  <div id="map"></div>
+  <div id="map" style="display: none"></div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
   </script>
 
