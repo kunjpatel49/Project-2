@@ -1,0 +1,20 @@
+{
+    "short_name": "Teaser",
+    "name": "Teaser",
+    "start_url": "/index.html",
+    "background_color": "#FFE1C4",
+    "display": "standalone",
+    "icons": [
+    {
+      "src": "/icons/TEASER.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/TEASER-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+    "theme_color": "#FFE1C4"
+}

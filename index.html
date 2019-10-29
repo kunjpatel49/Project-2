@@ -8,7 +8,7 @@
     <link rel="stylesheet"
         href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <ul class="navbar-nav">
     <li id="home" class="nav-item active">
@@ -17,14 +17,13 @@
     <li class="nav-item">
       <a class="nav-link" href="about.html">About</a>
     </li>
+       <li class="nav-item">
+      <a class="nav-link" href="map.html">Map</a>
+    </li>
   </ul>
 </nav>
-  
-  
 
-  
-  
-  <div class="jumbotron text-center bg-white" style="background-image: url('https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943__480.jpg')">
+  <div class="jumbotron text-center bg-white">
     <h1 style="font-family:'Times New Roman', Times, serif; color: black">Teaser</h1>
   </div>
   <meta charset="utf-8">
@@ -35,6 +34,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel='icon' href='favicon.ico' type='image/x-icon' />
   <style>
+    @import "compass/css3";
+    .search-bar{border-radius:100px;background:#fff;-webkit-box-shadow:0 0 5px rgba(0,0,0,0.15);box-shadow:0 0 5px rgba(0,0,0,0.15);padding:5px;margin-top:30px;padding-left:30px}.search-bar .form-group::after{content:'';display:block;height:60%;width:1px;background:#ddd;position:absolute;top:20%;right:0}.search-bar .form-group:nth-of-type(3)::after,.search-bar .form-group:last-of-type::after{display:none}.search-bar input,.search-bar .bootstrap-select{background:none;border:none;padding:20px 0 15px;width:100%}.search-bar input::-moz-placeholder,.search-bar .bootstrap-select::-moz-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar input::-webkit-input-placeholder,.search-bar .bootstrap-select::-webkit-input-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar input:-ms-input-placeholder,.search-bar .bootstrap-select:-ms-input-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar .bootstrap-select{width:100% !important;padding:0}
+    
+    .jumbotron{
+      background-image: url('https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943__480.jpg');
+    }
     body {
       background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/GfRLKaE/videoblocks-wedding-particles-background-animation-4k-hd_bo7mtc0az_thumbnail-full01.png");
       background-repeat:no-repeat;
@@ -47,6 +52,7 @@
       width: 100%;
       /* The width is the width of the web page */
     }
+ 
   </style>
   
   
@@ -57,8 +63,10 @@
 
 <section id="searchPage">
   <div class="content" style="text-align: center;">
-    <h3 style="color:lightblue">Search By Park Name</h3>
+    <h1 style="color:lightblue">Search By <span class="text-primary">Park    </span> name</h1>
+    <div class="search-bar">
     <input type="text" placeholder="Park" id="names" style="display: inline">
+    </div>
     <form style="color:lightblue">
       <input type="checkbox" id="upcoming" value="new" checked>Show Upcoming Shows Only
       <br>
@@ -68,28 +76,37 @@
     </button>
   </div>
   <div class="content" style="text-align: center;">
-    <h3 style="color:lightblue">Search By Movie Name</h3>
+    <h1 style="color:lightblue">Search By <span class="text-primary">Movie    </span> name</h1>
+    <div class="search-bar">
     <input type="text" placeholder="What's on your mind" id="movies" style="display: inline">
+    </div>
     <button id="titleSearch">
       Search
     </button>
   </div>
   <div class="content" style="text-align: center;">
     <form action="action.php" style="color:lightblue">
+       <p>
       <input type="checkbox" id="day1" value="Sun">Sunday's Shows
-      <br>
+      </p>
+      <p>
       <input type="checkbox" id="day2" value="Mon">Monday's Shows
-      <br>
+      </p>
+      <p>
       <input type="checkbox" id="day3" value="Tue">Tuesday's Shows
-      <br>
+      </p>
+      <p>
       <input type="checkbox" id="day4" value="Wed">Wednesday's Shows
-      <br>
+      </p>
+      <p>
       <input type="checkbox" id="day5" value="Thu">Thursday's Shows
-      <br>
+      </p>
+      <p>
       <input type="checkbox" id="day6" value="Fri">Friday's Shows
-      <br>
+      </p>
+      <p>
       <input type="checkbox" id="day7" value="Sat">Saturday's Shows
-      <br>
+      </p>
     </form>
     <button id="daySearch" class="bg-white">
       Search by Day
@@ -302,11 +319,11 @@ var markers = [];
    });
     
   </script>
-  <div id="map" style="display: none"></div>
+  <div id="map"></div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
   </script>
 
-
+<script src="/app.js"></script>
 
 
 </body>
