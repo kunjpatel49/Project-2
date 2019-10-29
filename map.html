@@ -1,102 +1,35 @@
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>MAP View</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  </head>
-  <body>
-   
-  
- 
-
-  <script>
-      
-      function getData(){
-          
-          $.get("https://data.cityofchicago.org/resource/7piw-z6r6.json", 
-               function(response){
-                  console.log(response)
-                 
-                  $.each(response,function(i,v){
-                      createMarkers(v);
-   
-                      })
-              });   
-
-      }
-  </script>
-      
-    <div id="map"></div>
-    
-      <script>
-
-      // This example displays a marker at the center of Australia.
-      // When the user clicks the marker, an info window opens.
-
-        
-      var map;
-          
-      function initMap() {
-         var uluru = {lat: -25.363, lng: 131.044};
-         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-           
-          
-      } //init map() ends here. 
-          
-       getData();
-      function createMarkers(record) {
-          if(record.location.latitude == undefined || record.location.longitude == undefined){
-             
-             }
-          else{
-              var loc1 = {lat: parseFloat(record.location.latitude) , lng: parseFloat(record.location.longitude)};
-          
-            if(record.cc == "Y") {
-        var cc = "Closed Captioned Movie"
-      } else {
-        var cc = "Not Closed-Captioned"
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
       }
-      var currDate = record.date;
-      currDate = currDate.split("T")[0];
-      var contentString = "<div class=info style= text-align: center>" + "<h3>" + record.title + " at " + record.park + "</h3>" + "<p> Address: " + record.park_address + "<br>Date: " + currDate + "<br>Rating: " + record.rating + "<br>CC: " + cc + "<br><a href='https://www.google.com/maps/search/?api=1&query=" + latitude + ", " + longitude + "'>" + "Get Directions" + "</a>" + "</p>" + "</div>";
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-      var marker = new google.maps.Marker({
-        position: loc,
-        map: map,
-        title: record.title
-      });
-
- 
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-  
-          } 
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
       }
-    </script>
-  
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
   </script>
-  </body>
+  </body>
 </html>
