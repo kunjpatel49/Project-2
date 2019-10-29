@@ -1,27 +1,30 @@
 var cacheName = 'app-v1';
 var appShellFiles = [
- "/index.html"
+ '/index.html',
+    '/about.html'
 ];
 
-
-
-self.addEventListener('install', function(e) {
-  console.log('[Service Worker] Install');
+//install event
+self.addEventListener('install', evt=> {
+  //console.log('service worker installed');
+  evt.waitUntil(caches.open(staticCache).then(cache=>{
+        console.log('cache adding');
+        cache.addAll(assets);                        
+      })
+    );
 });
 
+//activate event
+self.addEventListener('activate', evt=>{
+      //console.log('service worker activated');
+});
 
-self.addEventListener('fetch', function(e) {
-  e.respondWith(
-    caches.match(e.request).then(function(r) {
-      console.log('[Service Worker] Fetching resource: '+ e.request.url);
-      
-      return r || fetch(e.request).then(function(response) {
-          return caches.open(cacheName).then(function(cache) {
-            console.log('[Service Worker] Caching new resource: '+e.request.url);
-            cache.put(e.request, response.clone());
-            return response;
-        });
-      });
-    })
-  );
+//fetch event
+self.addEventListener('fetch', evt=>{
+          //console.log('fetch event', evt);
+         evt.respondWith(
+             caches.match(evt.request).then(cacheRes =>{
+                 return cacheRes || fetch(evt.request);
+             })
+         );
 });

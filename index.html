@@ -376,17 +376,7 @@
     <div id="map" style="display: none"></div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
     </script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').then(function(reg) {
-          // registration worked
-          console.log('Registration succeeded. Scope is ' + reg.scope);
-        }).catch(function(error) {
-          // registration failed
-          console.log('Registration failed with ' + error);
-        });
-      }
-    </script>
+    <script src="app.js"></script>
 
 <!--     <script>
         // Install option
