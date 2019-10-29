@@ -1,12 +1,12 @@
 {
   "name": "Teaser!",
   "short_name": "Teasr.",
-  "start_url": "https://github.com/kunjpatel49/Project-2/index.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "navy",
-  "description": "An app to make your phone say things.",
+  "description": "An app.",
   "icons": [{
-    "src": "https://github.com/kunjpatel49/Project-2/icon.png",
+    "src": "icon1.png",
     "sizes": "192x192",
     "type": "image/png"
   }],
