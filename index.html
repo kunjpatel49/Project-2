@@ -2,333 +2,413 @@
 <html>
 
 <head>
-  <!--   Search bar styles     -->
-  <title>Teaser</title>
-  <!-- MATERIAL COMPONENTS -->
-    <link rel="stylesheet"
-        href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css" />
+    <!--   Search bar styles     -->
+    <title>Teaser</title>
+    <!-- MATERIAL COMPONENTS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
-    
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li id="home" class="nav-item active">
-      <a class="nav-link" href="#searchPage">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="about.html">About</a>
-    </li>
-       <li class="nav-item">
-      <a class="nav-link" href="map.html">Map</a>
-    </li>
-  </ul>
-</nav>
-<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-  <div class="jumbotron text-center bg-white">
-    <h1 style="font-family:'Times New Roman', Times, serif; color: black">Teaser</h1>
-  </div>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel='icon' href='favicon.ico' type='imaget/x-icon' />
-  <style>
-    @import "compass/css3";
-    .search-bar{border-radius:100px;background:#fff;-webkit-box-shadow:0 0 5px rgba(0,0,0,0.15);box-shadow:0 0 5px rgba(0,0,0,0.15);padding:5px;margin-top:30px;padding-left:30px}.search-bar .form-group::after{content:'';display:block;height:60%;width:1px;background:#ddd;position:absolute;top:20%;right:0}.search-bar .form-group:nth-of-type(3)::after,.search-bar .form-group:last-of-type::after{display:none}.search-bar input,.search-bar .bootstrap-select{background:none;border:none;padding:20px 0 15px;width:100%}.search-bar input::-moz-placeholder,.search-bar .bootstrap-select::-moz-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar input::-webkit-input-placeholder,.search-bar .bootstrap-select::-webkit-input-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar input:-ms-input-placeholder,.search-bar .bootstrap-select:-ms-input-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar .bootstrap-select{width:100% !important;padding:0}
-    
-    .jumbotron{
-      background-image: url('https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943__480.jpg');
-    }
-    body {
-      background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/GfRLKaE/videoblocks-wedding-particles-background-animation-4k-hd_bo7mtc0az_thumbnail-full01.png");
-      background-repeat:no-repeat;
-      background-size:cover;
-      font-family:"Times New Roman", Times, serif;
-    }
-    #map {
-      height: 700px;
-      /* The height is 400 pixels */
-      width: 100%;
-      /* The width is the width of the web page */
-    }
- 
-  </style>
-  
-  
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel='icon' href='favicon.ico' type='imaget/x-icon' />
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/8d23004cc3.js" crossorigin="anonymous"></script>
+    <!--  Navbar  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 bg-dark navbar-dark">
+        <div class="container">
+            <a href="index.html" class="navbar-brand d-flex align-items-center"> <i class="fa fa-snowflake-o fa-lg text-primary mr-2"></i><strong>Teaser</strong>
+            </a>
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="#searchPage" class="nav-link font-italic"><strong>Home</strong></a>
+                    </li>
+                    <li class="nav-item active"><a href="about.html" class="nav-link font-italic"> About </a>
+                    </li>
+                    <li class="nav-item active" id="nav3"><a href="map.html" class="nav-link font-italic"> Map</a>
+                    </li>
+                    <li class="nav-item active" id="nav3">
+                        <button class="mdc-button" id="install">
+                            <i class="material-icons mdc-button__icon text-primary" aria-hidden="true">favorite</i>
+                            <span class="mdc-button__label text-primary">Install</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!--   Title Design   -->
+    <div class="jumbotron text-center bg-white">
+        <h1 style="font-family:'Times New Roman', Times, serif; color: black">Teaser</h1>
+    </div>
+
+    <style>
+        @import"@material/button/mdc-button";
+        @import"compass/css3";
+        .search-bar {
+            border-radius:100px;
+            background:#fff;
+            -webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.15);
+            box-shadow:0 0 5px rgba(0, 0, 0, 0.15);
+            padding:5px;
+            margin-top:30px;
+            padding-left:30px
+        }
+        .search-bar .form-group::after {
+            content:'';
+            display:block;
+            height:60%;
+            width:1px;
+            background:#ddd;
+            position:absolute;
+            top:20%;
+            right:0
+        }
+        .search-bar .form-group:nth-of-type(3)::after, .search-bar .form-group:last-of-type::after {
+            display:none
+        }
+        .search-bar input, .search-bar .bootstrap-select {
+            background:none;
+            border:none;
+            padding:20px 0 15px;
+            width:100%
+        }
+        .search-bar input::-moz-placeholder, .search-bar .bootstrap-select::-moz-placeholder {
+            color:#aaa;
+            font-weight:300;
+            font-family:"Poppins", sans-serif
+        }
+        .search-bar input::-webkit-input-placeholder, .search-bar .bootstrap-select::-webkit-input-placeholder {
+            color:#aaa;
+            font-weight:300;
+            font-family:"Poppins", sans-serif
+        }
+        .search-bar input:-ms-input-placeholder, .search-bar .bootstrap-select:-ms-input-placeholder {
+            color:#aaa;
+            font-weight:300;
+            font-family:"Poppins", sans-serif
+        }
+        .search-bar .bootstrap-select {
+            width:100% !important;
+            padding:0
+        }
+        .jumbotron {
+            background-image: url('https://cdn.pixabay.com/photo/2016/09/22/10/44/banner-1686943__480.jpg');
+        }
+        body {
+            background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/GfRLKaE/videoblocks-wedding-particles-background-animation-4k-hd_bo7mtc0az_thumbnail-full01.png");
+            background-repeat:no-repeat;
+            background-size:cover;
+            font-family:"Times New Roman", Times, serif;
+        }
+        #map {
+            height: 700px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
 </head>
 
 
 <body>
 
-<section id="searchPage">
-  <div class="content" style="text-align: center;">
-    <h1 style="color:lightblue">Search By <span class="text-primary">Park    </span> name</h1>
-    <div class="search-bar">
-    <input type="text" placeholder="Park" id="names" style="display: inline">
-    </div>
-    <form style="color:lightblue">
-      <input type="checkbox" id="upcoming" value="new" checked>Show Upcoming Shows Only
-      <br>
-    </form>
-    <button id="txtSearch">
-      Search
-    </button>
-  </div>
-  <div class="content" style="text-align: center;">
-    <h1 style="color:lightblue">Search By <span class="text-primary">Movie    </span> name</h1>
-    <div class="search-bar">
-    <input type="text" placeholder="What's on your mind" id="movies" style="display: inline">
-    </div>
-    <button id="titleSearch">
-      Search
-    </button>
-  </div>
-  <div class="content" style="text-align: center;">
-    <form action="action.php" style="color:lightblue">
-       <p>
-      <input type="checkbox" id="day1" value="Sun">Sunday's Shows
-      </p>
-      <p>
-      <input type="checkbox" id="day2" value="Mon">Monday's Shows
-      </p>
-      <p>
-      <input type="checkbox" id="day3" value="Tue">Tuesday's Shows
-      </p>
-      <p>
-      <input type="checkbox" id="day4" value="Wed">Wednesday's Shows
-      </p>
-      <p>
-      <input type="checkbox" id="day5" value="Thu">Thursday's Shows
-      </p>
-      <p>
-      <input type="checkbox" id="day6" value="Fri">Friday's Shows
-      </p>
-      <p>
-      <input type="checkbox" id="day7" value="Sat">Saturday's Shows
-      </p>
-    </form>
-    <button id="daySearch" class="bg-white">
-      Search by Day
-    </button>
-  </div>
-  <!--  Reserving a DIV for number of results   -->
-  <div id=results style="color: white"></div>
-  <br>
-  <div class="tableC" style="text-align: center;">
-    <ul id="list" class="list-group">
-    </ul>
-  </div>
+    <!--  SEARCH PAGE DETAIL    -->
+    <section id="searchPage">
+        <div class="content" style="text-align: center;">
+            <h1 style="color:lightblue">Search By <span class="text-primary">Park    </span> name</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Park" id="names" style="display: inline">
+            </div>
+            <form style="color:lightblue">
+                <input type="checkbox" id="upcoming" value="new" checked>Show Upcoming Shows Only
+                <br>
+            </form>
+            <button id="txtSearch">
+                Search
+            </button>
+        </div>
+        <div class="content" style="text-align: center;">
+            <h1 style="color:lightblue">Search By <span class="text-primary">Movie    </span> name</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="What's on your mind" id="movies" style="display: inline">
+            </div>
+            <button id="titleSearch">
+                Search
+            </button>
+        </div>
+        <div class="content" style="text-align: center;">
+            <form action="action.php" style="color:lightblue">
+                <p>
+                    <input type="checkbox" id="day1" value="Sun">Sunday's Shows
+                </p>
+                <p>
+                    <input type="checkbox" id="day2" value="Mon">Monday's Shows
+                </p>
+                <p>
+                    <input type="checkbox" id="day3" value="Tue">Tuesday's Shows
+                </p>
+                <p>
+                    <input type="checkbox" id="day4" value="Wed">Wednesday's Shows
+                </p>
+                <p>
+                    <input type="checkbox" id="day5" value="Thu">Thursday's Shows
+                </p>
+                <p>
+                    <input type="checkbox" id="day6" value="Fri">Friday's Shows
+                </p>
+                <p>
+                    <input type="checkbox" id="day7" value="Sat">Saturday's Shows
+                </p>
+            </form>
+            <button id="daySearch" class="bg-white">
+                Search by Day
+            </button>
+        </div>
+        <!--  Reserving a DIV for number of results   -->
+        <div id=results style="color: white"></div>
+        <br>
+        <div class="tableC" style="text-align: center;">
+            <ul id="list" class="list-group">
+            </ul>
+        </div>
 
-  </section>
+    </section>
 
 
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-  </script>
+    <!--------    SCRIPTING AND DATA LOOPING     -------->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
-  <script>
-    var d = new Date();
-    var temp;
-    var resultsFound = 0;
-    var count = 0;
-    function getData(searchQuery, searchType) {
-      $.get(endpoint + searchQuery + $(searchType).val(), function(response) {
-        $.each(response, function(i, v) {
-          temp = new Date(v.date);
-          for(var k=0; k<=7;k++){
-          if(v.day == $("#day"+k).val() && $("#day"+k).prop('checked')) {
-            if($('#upcoming').prop('checked') && temp >= d) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
-              $("#list").append(markup);
-              createMarkers(v);
-              count = 1;
-              resultsFound++;
-            } else {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
-              $("#list").append(markup);
-              createMarkers(v);
-              count = 1;
-              resultsFound++;
-            }
-          } 
-         }
-          // show all available SHOWS in that park or that movie if no prefered day selected
-          if($(":checkbox:checked").length == 0 && !$('#upcoming').prop('checked')) {
-            count = 1;
-            var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
-            $("#list").append(markup);
-            createMarkers(v);
-            count = 1;
-            resultsFound++;
-          }
+    <script>
+        var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
+        var d = new Date();
+        var temp;
+        var resultsFound = 0;
+        var count = 0;
+        /********    DATA LOOP FOR PARK OR MOVIE SEARCH WITH DAY IF CHECKED    *********/
+
+        function getData(searchQuery, searchType) {
+            $.get(endpoint + searchQuery + $(searchType).val(), function(response) {
+                $.each(response, function(i, v) {
+                    temp = new Date(v.date);
+                    for(var k = 0; k <= 7; k++) {
+                        if(v.day == $("#day" + k).val() && $("#day" + k).prop('checked')) {
+                            if($('#upcoming').prop('checked') && temp >= d) {
+                                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                                $("#list").append(markup);
+                                createMarkers(v);
+                                count = 1;
+                                resultsFound++;
+                            } else {
+                                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "day" + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                                $("#list").append(markup);
+                                createMarkers(v);
+                                count = 1;
+                                resultsFound++;
+                            }
+                        }
+                    }
+                    // show all available SHOWS in that park or that movie if no prefered day selected
+                    if($(":checkbox:checked").length == 0 && !$('#upcoming').prop('checked')) {
+                        count = 1;
+                        var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                        $("#list").append(markup);
+                        createMarkers(v);
+                        count = 1;
+                        resultsFound++;
+                    }
+                });
+                if(count == 1) {
+                    $("#results").append("About " + resultsFound + " results found!");
+                }
+                if(count == 0) {
+                    alert("No Shows Available on this day!");
+                }
+            });
+        }
+
+        function hideScreens() {
+            $(".content").hide();
+        }
+        $(".tableC").hide();
+        $(document).ready(function() {
+            $("#txtSearch").on("click", function() {
+                hideScreens();
+                $(".tableC").show();
+                getData('?park=', '#names');
+            });
         });
-        if(count == 1) {
-          $("#results").append("About " + resultsFound + " results found!");
-        }
-        if(count == 0) {
-          alert("No Shows Available on this day!");
-        }
-      });
-    }
-
-    function hideScreens() {
-      $(".content").hide();
-    }
-    $(".tableC").hide();
-    var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
-    $(document).ready(function() {
-      $("#txtSearch").on("click", function() {
-        hideScreens();
-        $(".tableC").show();
-        getData('?park=', '#names');
-      });
-    });
-
-    // Search by day
-    var d = new Date();
-    var temp;
-    var counter = 0;
-
-    $(document).ready(function() {
-      $("#daySearch").on("click", function() {
-        hideScreens();
-        $(".tableC").show();
-        for(var j = 0; j <= 7; j++){
-        if($('#day'+j).prop('checked')) {
-          $.get(endpoint + "?day=" + $("#day"+j).val(), function(response) {
-            $.each(response, function(i, v) {
-              temp = new Date(v.date);
-              if($('#upcoming').prop('checked') && temp >= d) {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
-                $("#list").append(markup);
-                createMarkers(v);
-                count = 1;
-                counter++;
-              } else {
-                var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<button type='button' class=button onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
-                $("#list").append(markup);
-                createMarkers(v);
-                counter++;
-                count = 1;
-              }
+         // Search by day
+        var d = new Date();
+        var temp;
+        var counter = 0;
+        $(document).ready(function() {
+            $("#daySearch").on("click", function() {
+                hideScreens();
+                $(".tableC").show();
+                for(var j = 0; j <= 7; j++) {
+                    if($('#day' + j).prop('checked')) {
+                        $.get(endpoint + "?day=" + $("#day" + j).val(), function(response) {
+                            $.each(response, function(i, v) {
+                                temp = new Date(v.date);
+                                if($('#upcoming').prop('checked') && temp >= d) {
+                                    var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                                    $("#list").append(markup);
+                                    createMarkers(v);
+                                    count = 1;
+                                    counter++;
+                                } else {
+                                    var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "<button type='button' class=button onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                                    $("#list").append(markup);
+                                    createMarkers(v);
+                                    counter++;
+                                    count = 1;
+                                }
+                            });
+                        });
+                    }
+                }
+                if(!$('#upcoming').prop('checked') && $(":checkbox:checked").length == 0) {
+                    $.get(endpoint, function(response) {
+                        $.each(response, function(i, v) {
+                            var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
+                            $("#list").append(markup);
+                            createMarkers(v);
+                            count = 1;
+                            counter++;
+                        });
+                    });
+                    if(count == 1) {
+                        console.log("kjjkbkbkbhbhk" + resultsFound);
+                        $("#results").append("About " + counter + " results found!");
+                    }
+                }
             });
-           
-          });
-          
-        }
-    }
-           
-        if(!$('#upcoming').prop('checked') && $(":checkbox:checked").length == 0) {
-          $.get(endpoint, function(response) {
-            $.each(response, function(i, v) {
-              var markup = "<div class=maps>" + "<li class='list-group-item'>" + v.day + "<br>" + v.title + "<br>" + v.park + "<br>" + v.park_phone + "<br>" + "Address: " + v.park_address + "<br>Date: " + v.date.split("T")[0] + "<br>Rating: " + v.rating + "<br>CC: " + v.cc + "<br><button type='button' onclick='hideResults()'>Show On Maps</button></li>" + "<br>" + "</div>";
-              $("#list").append(markup);
-              createMarkers(v);
-              count = 1;
-              counter++;
+        });
+         // Search by Movie Title and Day
+        $(document).ready(function() {
+            $("#titleSearch").on("click", function() {
+                hideScreens();
+                $(".tableC").show();
+                getData('?title=', '#movies');
             });
-          });
-          if(count == 1 ) {
-          console.log("kjjkbkbkbhbhk"+resultsFound);
-          $("#results").append("About " + counter + " results found!");
-        }
-        }
-    });
-    });
-     
-     
-     // Search by Movie Title and Day
-    $(document).ready(function() {
-      $("#titleSearch").on("click", function() {
-        hideScreens();
-        $(".tableC").show();
-        getData('?title=', '#movies');
-      });
-    });
+        });
+         // Initialize and add the map
+        var map;
+        var markers = [];
 
-    // Initialize and add the map
-    var map;
-var markers = [];
-    function initMap() {
-      // The location of Uluru
-      
-      var chicago = {
-        lat: 41.8781,
-        lng: -87.6298
-      };
-      map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 11,
-        center: chicago
-      });
-      // The marker, positioned at Uluru
-    }
+        function initMap() {
+            // The location of Uluru
+            var chicago = {
+                lat: 41.8781,
+                lng: -87.6298
+            };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: chicago
+            });
+            // The marker, positioned at Uluru
+        }
 
-    function createMarkers(record) {
-      var latitude = parseFloat(record.location.latitude);
-      var longitude = parseFloat(record.location.longitude);
-      var loc = {
-        lat: latitude,
-        lng: longitude
-      };
-      if(record.cc == "Y") {
-        var cc = "Closed Captioned Movie"
-      } else {
-        var cc = "Not Closed-Captioned"
+        function createMarkers(record) {
+            var latitude = parseFloat(record.location.latitude);
+            var longitude = parseFloat(record.location.longitude);
+            var loc = {
+                lat: latitude,
+                lng: longitude
+            };
+            if(record.cc == "Y") {
+                var cc = "Closed Captioned Movie"
+            } else {
+                var cc = "Not Closed-Captioned"
+            }
+            var currDate = record.date;
+            currDate = currDate.split("T")[0];
+            var contentString = "<div class=info style= text-align: center>" + "<h3>" + record.title + " at " + record.park + "</h3>" + "<p> Address: " + record.park_address + "<br>Date: " + currDate + "<br>Rating: " + record.rating + "<br>CC: " + cc + "<br><a href='https://www.google.com/maps/search/?api=1&query=" + latitude + ", " + longitude + "'>" + "Get Directions" + "</a>" + "</p>" + "</div>";
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: loc,
+                map: map,
+                title: record.title
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                if(marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            });
+            markers.push(marker);
+        }
+
+        function hideResults() {
+            $(".maps").hide();
+            $("#map").show();
+        }
+
+        function setMapOnAll(map) {
+            for(var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+        $("#home").click(function() {
+            $(".maps").hide();
+            $("#map").hide();
+            $(".content").show();
+            setMapOnAll(null);
+            resultsFound = 0;
+            $("#results").empty();
+        });
+    </script>
+    <div id="map" style="display: none"></div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
+    </script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+          // registration worked
+          console.log('Registration succeeded. Scope is ' + reg.scope);
+        }).catch(function(error) {
+          // registration failed
+          console.log('Registration failed with ' + error);
+        });
       }
-      var currDate = record.date;
-      currDate = currDate.split("T")[0];
-      var contentString = "<div class=info style= text-align: center>" + "<h3>" + record.title + " at " + record.park + "</h3>" + "<p> Address: " + record.park_address + "<br>Date: " + currDate + "<br>Rating: " + record.rating + "<br>CC: " + cc + "<br><a href='https://www.google.com/maps/search/?api=1&query=" + latitude + ", " + longitude + "'>" + "Get Directions" + "</a>" + "</p>" + "</div>";
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString
-      });
-      var marker = new google.maps.Marker({
-        position: loc,
-        map: map,
-        title: record.title
-      });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
-        if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-        } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-      });
-      markers.push(marker);
-    }
-   
-    function hideResults() {
-      $(".maps").hide();
-      $("#map").show();
-    }
-    
-    function setMapOnAll(map) {
-        for (var i = 0; i < markers.length; i++) {
-          markers[i].setMap(map);
-        }
-      }
-    
-   $("#home").click(function()  {
-     $(".maps").hide();
-     $("#map").hide();
-      $(".content").show();
-     setMapOnAll(null);
-     resultsFound = 0;
-     $( "#results" ).empty();
-   });
-    
-  </script>
-  <div id="map" style="display: none"></div>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
-  </script>
+    </script>
 
-<script src="/app.js"></script>
-
-
+<!--     <script>
+        // Install option
+         // 
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
+            e.preventDefault();
+            // Stash the event so it can be triggered later.
+            deferredPrompt = e;
+        });
+        
+        $("#install").on('click', (e) =>{
+           deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+               if(choiceResult.outcome === 'accepted'){
+                  console.log("Accepted");
+                  }
+                deferredPrompt = null;
+            });
+        });
+    </script> -->
 </body>
 
 </html>
