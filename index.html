@@ -8,7 +8,8 @@
     <link rel="stylesheet"
         href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+<link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+    
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <ul class="navbar-nav">
     <li id="home" class="nav-item active">
@@ -22,7 +23,9 @@
     </li>
   </ul>
 </nav>
-
+<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <div class="jumbotron text-center bg-white">
     <h1 style="font-family:'Times New Roman', Times, serif; color: black">Teaser</h1>
   </div>
@@ -32,7 +35,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel='icon' href='favicon.ico' type='image/x-icon' />
+  <link rel='icon' href='favicon.ico' type='imaget/x-icon' />
   <style>
     @import "compass/css3";
     .search-bar{border-radius:100px;background:#fff;-webkit-box-shadow:0 0 5px rgba(0,0,0,0.15);box-shadow:0 0 5px rgba(0,0,0,0.15);padding:5px;margin-top:30px;padding-left:30px}.search-bar .form-group::after{content:'';display:block;height:60%;width:1px;background:#ddd;position:absolute;top:20%;right:0}.search-bar .form-group:nth-of-type(3)::after,.search-bar .form-group:last-of-type::after{display:none}.search-bar input,.search-bar .bootstrap-select{background:none;border:none;padding:20px 0 15px;width:100%}.search-bar input::-moz-placeholder,.search-bar .bootstrap-select::-moz-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar input::-webkit-input-placeholder,.search-bar .bootstrap-select::-webkit-input-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar input:-ms-input-placeholder,.search-bar .bootstrap-select:-ms-input-placeholder{color:#aaa;font-weight:300;font-family:"Poppins",sans-serif}.search-bar .bootstrap-select{width:100% !important;padding:0}
@@ -319,7 +322,7 @@ var markers = [];
    });
     
   </script>
-  <div id="map"></div>
+  <div id="map" style="display: none"></div>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
   </script>
 
