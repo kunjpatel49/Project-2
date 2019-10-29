@@ -376,39 +376,8 @@
     <div id="map" style="display: none"></div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
     </script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js').then(function(reg) {
-          // registration worked
-          console.log('Registration succeeded. Scope is ' + reg.scope);
-        }).catch(function(error) {
-          // registration failed
-          console.log('Registration failed with ' + error);
-        });
-      }
-    </script>
+    <script src="app.js"></script>
 
-<!--     <script>
-        // Install option
-         // 
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent Chrome 67 and earlier from automatically showing the prompt
-            e.preventDefault();
-            // Stash the event so it can be triggered later.
-            deferredPrompt = e;
-        });
-        
-        $("#install").on('click', (e) =>{
-           deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-               if(choiceResult.outcome === 'accepted'){
-                  console.log("Accepted");
-                  }
-                deferredPrompt = null;
-            });
-        });
-    </script> -->
 </body>
 
 </html>
