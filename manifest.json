@@ -1,12 +1,12 @@
 {
   "name": "Teaser!",
   "short_name": "Teasr.",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "navy",
-  "description": "An app.",
+  "description": "An app to make your phone say things.",
   "icons": [{
-    "src": "icon1.png",
+    "src": "/icons/icon1.png",
     "sizes": "192x192",
     "type": "image/png"
   }],
