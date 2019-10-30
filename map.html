@@ -18,7 +18,7 @@
 <script src="https://kit.fontawesome.com/8d23004cc3.js" crossorigin="anonymous"></script>
     
   <head>
-    <title>Simple Map</title>
+    <title>All Results Shown</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
 
@@ -59,13 +59,83 @@
   <body>
     <div id="map"></div>
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+        var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
+        $.get(endpoint, function(response) {
+                        $.each(response, function(i, v) {
+                            createMarkers(v);
+                        });
+                    });
+        
+      // Initialize and add the map
+        var map;
+        var markers = [];
+
+        function initMap() {
+            // The location of Uluru
+            var chicago = {
+                lat: 41.8781,
+                lng: -87.6298
+            };
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: chicago
+            });
+            // The marker, positioned at Uluru
+        }
+
+        function createMarkers(record) {
+            var latitude = parseFloat(record.location.latitude);
+            var longitude = parseFloat(record.location.longitude);
+            var loc = {
+                lat: latitude,
+                lng: longitude
+            };
+            if(record.cc == "Y") {
+                var cc = "Closed Captioned Movie"
+            } else {
+                var cc = "Not Closed-Captioned"
+            }
+            var currDate = record.date;
+            currDate = currDate.split("T")[0];
+            var contentString = "<div class=info style= text-align: center>" + "<h3>" + record.title + " at " + record.park + "</h3>" + "<p> Address: " + record.park_address + "<br>Date: " + currDate + "<br>Rating: " + record.rating + "<br>CC: " + cc + "<br><a href='https://www.google.com/maps/search/?api=1&query=" + latitude + ", " + longitude + "'>" + "Get Directions" + "</a>" + "</p>" + "</div>";
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: loc,
+                map: map,
+                title: record.title
+            });
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+                if(marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            });
+            markers.push(marker);
+        }
+
+        function hideResults() {
+            $(".maps").hide();
+            $("#map").show();
+        }
+
+        function setMapOnAll(map) {
+            for(var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+        $("#home").click(function() {
+            $(".maps").hide();
+            $("#map").hide();
+            $(".content").show();
+            setMapOnAll(null);
+            resultsFound = 0;
+            $("#results").empty();
         });
-      }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
   </script>

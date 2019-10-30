@@ -5,6 +5,15 @@
     <!--   Search bar styles     -->
     <title>Teaser</title>
     <!-- MATERIAL COMPONENTS -->
+    
+    <!----  Safari's Meta Tag to make this app install-able on iOS  ---->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="navy">
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/icon1.png">
+<link rel="apple-touch-icon" sizes="192x192" href="touch-icon-iphone-retina.png">
+<link rel="apple-touch-icon" sizes="192-192" href="icons/movie.png">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -28,17 +37,11 @@
             </button>
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#searchPage" class="nav-link font-italic"><strong>Home</strong></a>
+                    <li class="nav-item active"><a href="index.html" class="nav-link font-italic"><strong>Home</strong></a>
                     </li>
                     <li class="nav-item active"><a href="about.html" class="nav-link font-italic"> About </a>
                     </li>
                     <li class="nav-item active" id="nav3"><a href="map.html" class="nav-link font-italic"> Map</a>
-                    </li>
-                    <li class="nav-item active" id="nav3">
-                        <button class="mdc-button" id="install">
-                            <i class="material-icons mdc-button__icon text-primary" aria-hidden="true">favorite</i>
-                            <span class="mdc-button__label text-primary">Install</span>
-                        </button>
                     </li>
                 </ul>
             </div>
@@ -194,12 +197,12 @@
         var temp;
         var resultsFound = 0;
         var count = 0;
+        
         /********    DATA LOOP FOR PARK OR MOVIE SEARCH WITH DAY IF CHECKED    *********/
-
         function getData(searchQuery, searchType) {
             $.get(endpoint + searchQuery + $(searchType).val(), function(response) {
                 $.each(response, function(i, v) {
-                    temp = new Date(v.date);
+                    temp = new Date(v.date.split("T")[0]);
                     for(var k = 0; k <= 7; k++) {
                         if(v.day == $("#day" + k).val() && $("#day" + k).prop('checked')) {
                             if($('#upcoming').prop('checked') && temp >= d) {
@@ -288,7 +291,6 @@
                         });
                     });
                     if(count == 1) {
-                        console.log("kjjkbkbkbhbhk" + resultsFound);
                         $("#results").append("About " + counter + " results found!");
                     }
                 }
@@ -373,6 +375,8 @@
             $("#results").empty();
         });
     </script>
+    
+        <!--   Map Div hidden, shwoed when needed   -->
     <div id="map" style="display: none"></div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
     </script>
@@ -381,5 +385,10 @@
 
 
 </body>
+    <footer class="bg-light pb-5" >
+  <div class="container text-center">
+    <p class="font-italic text-muted mb-0">&copy; Copyrights teaser.com All rights reserved.</p>
+  </div>
+</footer>
 
 </html>
