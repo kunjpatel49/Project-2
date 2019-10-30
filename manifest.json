@@ -4,6 +4,7 @@
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "navy",
+    "theme_color": "navy",
     "description": "An app to make your phone say things.",
     "icons": [{
         "src": "icons/icon1.png",
