@@ -6,7 +6,7 @@
   "background_color": "navy",
   "description": "An app to make your phone say things.",
   "icons": [{
-    "src": "/icons/icon1.png",
+    "src": "https://myrealdomain.com/images/material-design-backgrounds-3.png",
     "sizes": "192x192",
     "type": "image/png"
   }],
