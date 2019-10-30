@@ -376,8 +376,29 @@
     <div id="map" style="display: none"></div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0UFLZGzVPnpsL404NoKqh0WdR996qPNc&callback=initMap">
     </script>
+<<<<<<< HEAD
     <script src="app.js"></script>
 
+=======
+    <script>
+        if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+
+    if(reg.installing) {
+      console.log('Service worker installing');
+    } else if(reg.waiting) {
+      console.log('Service worker installed');
+    } else if(reg.active) {
+      console.log('Service worker active');
+    }
+
+  }).catch(function(error) {
+    // registration failed
+    console.log('Registration failed with ' + error);
+  });
+}
+    </script>
+>>>>>>> bc526a2aa0538e0ddfc9b2405b57418328b0b7e6
 
 </body>
 

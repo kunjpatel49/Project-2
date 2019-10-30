@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js').then(function(reg) {
 
@@ -14,3 +15,16 @@ if ('serviceWorker' in navigator) {
     console.log('Registration failed with ' + error);
   });
 }
+=======
+if ('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(function(registration){
+    console.log('service worker registration succeeded:',registration);
+  },
+function(error){
+  console.log('service worker registration failed:',error);
+});
+}
+else{
+  console.log('service workers are not supported.');
+}
+>>>>>>> bc526a2aa0538e0ddfc9b2405b57418328b0b7e6
