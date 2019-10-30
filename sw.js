@@ -1,7 +1,8 @@
 var cacheName = 'app-v1';
 var assets = [
  'index.html',
-    'about.html'
+ 'about.html',
+ 'map.html'
 ];
 
 //install event
