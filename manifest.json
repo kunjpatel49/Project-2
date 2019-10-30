@@ -1,7 +1,7 @@
 {
   "name": "Teaser!",
   "short_name": "Teasr.",
-  "start_url": "/",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "navy",
   "description": "An app to make your phone say things.",
